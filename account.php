@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BANNY ENcrypt - Account</title>
+    <title>Train Management - Account</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body style="background-color: #696969;">
@@ -63,30 +63,11 @@ session_start();
                         <td>:</td>
                         <td><input style="width: 200px;" type="text" name="Name" placeholder="Name" size="50"  value="<?php echo "$loggeduser[Name]" ?>" required></td>                       
                     </tr>
-                    <tr style="height: 30px;">
-                        <td>NIC No <i style="color: red;">*</i></td>
-                        <td>:</td>
-                        <td><input style="width: 200px;" type="text" name="NIC" placeholder="NIC no" value="<?php echo "$loggeduser[IDNo]" ?>" required></td>                       
-                    </tr>
-                    <tr style="height: 30px;">
-                        <td>Address</td>
-                        <td>:</td>
-                        <td><input style="width: 200px;" type="text" name="Address" placeholder="Address" size="50" value="<?php echo "$loggeduser[Location]" ?>"></td>                       
-                    </tr>
-                    <tr style="height: 30px;">
-                        <td>Gender <i style="color: red;">*</i></td>
-                        <td>:</td>
-                        <td><select name="Gender" id="Gender" required>
-                                <option selected="selected" value="<?php echo "$loggeduser[Gender]" ?>"><?php echo "$loggeduser[Gender]" ?></option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Other">Other</option>  
-                            </select></td>                       
-                    </tr>
+                    
                     <tr style="height: 30px;">
                         <td>User Name <i style="color: red;">*</i></td>
                         <td>:</td>
-                        <td><input style="width: 200px; background-color: #cfcfcf;" type="text" name="UserName" placeholder="User Name" value="<?php echo "$loggeduser[UserName]" ?>" readonly required></td>                       
+                        <td><input style="width: 200px; background-color: #cfcfcf;" type="text" name="UserName" placeholder="User Name" value="<?php echo "$loggeduser[UserID]" ?>" readonly required></td>                       
                     </tr>
                     <tr style="height: 30px;">
                         <td>Password <i style="color: red;">*</i></td>
