@@ -19,7 +19,9 @@
 <body>
 
 	<?php include("inc/header.php"); 
-
+	date_default_timezone_set("Asia/Colombo");
+	$today = date("Y-m-d");
+	//echo $today;
 		if (isset($_GET['Delete'])){
 			$tID = $_GET['Delete'];
 			$query1 = "DELETE FROM train WHERE ID = $tID";
@@ -65,7 +67,7 @@
 	
 	<div class="dashboard" style="width: 100%; margin: auto;">
 		<div class="btns">
-			<button class="btn2" type="button" onclick="location.href = 'addDelay.php';" id="myBtn">Add Delay</button>
+			<!--<button class="btn2" type="button" onclick="location.href = 'addDelay.php';" id="myBtn">Add Delay</button>-->
 			<?php if($loggeduser['Role'] == "Admin"){ ?>
 				<button class="btn2" type="button" onclick="location.href = 'addTrain.php'" id="myBtn">Add Train</button>
 				<button class="btn2" type="button" onclick="location.href = 'signup.php';" id="myBtn">Add User</button>
@@ -89,21 +91,35 @@
 						<th style="width: 10%;">End</th>
 						<th style="width: 15%;">TrackID</th>
 						<th style="width: 10%;">Status</th>
-						<th style="width: 10%;">Running Status</th>												
+						<th style="width: 10%;">Running Status</th>	
+						<th style="width: 10%;">Delay</th>												
 					</tr>
 				</thead>
 				<tbody>
 					<?php while( $developer = mysqli_fetch_assoc($res) ) { ?>
-					   <tr id="<?php echo $developer ['ID']; ?>">
-					   <td style="width: 15%;"><?php echo $developer ['Number']; ?></td>
-					   <td style="width: 40%;"><?php echo $developer ['Name']; ?></td>
-					   <td style="width: 10%;"><?php echo $developer ['Start']; ?></td>
-					   <td style="width: 10%;"><?php echo $developer ['End']; ?></td>
-					   <td style="width: 15%;"><?php echo $developer ['TrackID']; ?></td> 
-					   <td style="width: 10%;"><?php echo $developer ['Status']; ?></td>
-					   <td style="width: 10%;"><?php echo $developer ['Cancel']; ?></td>
-					   <td style="width: 10%;"><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'edit.php?ID=<?php echo $developer ['ID']; ?>';" id="myBtn">Edit</button></td>
-					   <td style="width: 10%;"><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'home.php?Delete=<?php echo $developer ['ID']; ?>';" id="myBtn">Delete</button></td>  				   				   				  
+					   <tr id="<?php echo $developer['ID']; ?>">
+					   <td><?php echo $developer['Number']; ?></td>
+					   <td ><?php echo $developer['Name']; ?></td>
+					   <td><?php echo $developer['Start']; ?></td>
+					   <td ><?php echo $developer['End']; ?></td>
+					   <td><?php echo $developer['TrackID']; ?></td> 
+					   <td ><?php echo $developer['Status']; ?></td>
+					   <td ><?php echo $developer['Cancel']; ?></td>
+					   <?php 
+					   		
+					   		if($loggeduser['StationID'] != ""){
+					   			$query5 = "SELECT * FROM delay WHERE StationID=$loggeduser[StationID] AND TrainID=$developer[ID] AND DATE(Date) = '$today'";
+								$res5 = mysqli_query($con, $query5);
+								$delay = mysqli_fetch_assoc($res5);
+						   }
+						   else{
+								$delay['Delay'] = "";
+						   }
+					   ?>
+					   <td ><?php echo $delay['Delay']; ?></td>
+					   <td ><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'delay.php?Train=<?php echo $developer['ID']; ?>';" id="myBtn">Delay</button></td>
+					   <td ><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'edit.php?ID=<?php echo $developer['ID']; ?>';" id="myBtn">Edit</button></td>
+					   <td ><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'home.php?Delete=<?php echo $developer['ID']; ?>';" id="myBtn">Delete</button></td>  				   				   				  
 					   </tr>
 					<?php } ?>
 				</tbody>

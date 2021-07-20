@@ -35,7 +35,7 @@
   					<div class="dropdown-content" >
     					<a href="home.php" style="width: 100%;">Home</a>
 						<a href="account.php" style="width: 100%;">Account</a>
-						<a href="addDelay.php" style="width: 100%;">Add Delay</a>
+						<!--<a href="addDelay.php" style="width: 100%;">Add Delay</a>-->
 						<?php if($loggeduser['Role'] == "Admin"){ ?>
 							<a href="addTrain.php" style="width: 100%;">Add Train</a>
 							<a href="signup.php" style="width: 100%;">Add User</a>
