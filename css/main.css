@@ -66,9 +66,10 @@ p.greeting{
 p.copy{
 	position: absolute;  	
 	width: 100%;
-  	padding: 0px 0px 0px 5px;
+  	padding: 0px 0px 0px 0px;
   	text-align: center;
 	margin: auto;
+	margin-top: -10px;
 	color: white;
 			
 }
@@ -127,6 +128,9 @@ h3.rec{
 	
 
 }
+.btn{
+	cursor: pointer;
+}
 .all{
 	background-color: #f5f5f5;
 	padding: 10px;
@@ -143,24 +147,65 @@ h3.rec{
 	padding: 10px;
 	border-radius: 20px;
 }
+.btns{
+	width: 50%;
+	float: left;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.btn2{
+	width: 20%;
+	border-radius: 5px; 
+	padding: 20px;
+	margin-left: 20px;
+	cursor: pointer;
+}
+.search{
+	width: 40%;
+	margin: auto;
+	margin-top: 20px;
+	float:right; 	
+	
+}
+.ins{
+	width: 25%;
+	margin: auto;
+	float: right;
+	
+}
 
+.tabName{
+	color: white;
+	width: 100%;
+}
+h1{
+	color: white;
+	text-align: center;
+}
 .table{
+	width: 100%;
+	clear:both;
+	padding-top: 20px;
+	
+}
+table{
 				
-                margin-top: 0px;
-                width:50%;
-                overflow:auto;
+	
 
+}
 
-            }
+table.trains {
 
-table.alltab {
-
+	background-color: white; 
+	width: 100%; 
+	text-align: left;
 				float: left;
-				margin-left: 20px;
-				margin-top: 0px;
+				
 				position: absolute;		
                 
-                width:50%;
+                width:80%;
+				margin-left: 10%;
+				margin-right: 10%;
                 overflow:auto;
                 font-family: helvetica,arial,sans-serif;
                 font-size:14px;
@@ -170,21 +215,21 @@ table.alltab {
                 border-collapse: collapse;
                 text-align: center;
             }
-            table.alltab th {
+            table.trains th {
                 border-width: 1px;
-                padding: 8px;
+                padding: 2px;
                 border-style: solid;
                 border-color: #666666;
                 background-color: #4f69ff;
             }
-            table.alltab td {
+            table.trains td {
                 border-width: 1px;
-                padding: 8px;
+                padding: 2px;
                 border-style: solid;
                 border-color: #666666;
-                cursor: pointer;
+                
             }
-            table.alltab tr:hover{
+            table.trains tr:hover{
             	background-color: #D8DA5C;
             	
             }

@@ -7,7 +7,7 @@
 <head>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="refresh" content="1800;url=logout.php" />
+	
 	<title>Train Schedule and Tracking - Search</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -22,7 +22,7 @@
         $To = $_POST['To'];
         $Date = strtotime($_POST['Date']);
         $Time = $_POST['Time'];
-        
+
         if($Date==""){
             $Date = date("l");
         }
