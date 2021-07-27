@@ -1,16 +1,8 @@
 	<?php 
 		include_once('inc/connection.php');
-		//$query = "SELECT * FROM loggeduser WHERE id = 1";
-		//$res1 = mysqli_query($con, $query);
-		//$loggedDet = mysqli_fetch_assoc($res1);
+		date_default_timezone_set("Asia/Colombo");
+		$today = date("Y-m-d");
 		
-		//$query = "SELECT * FROM loggeduser WHERE id = $loggedDet";
-		//$res1 = mysqli_query($con, $query);
-		//$loggedDet = mysqli_fetch_assoc($res1);
-
-		/*if ($loggeduser['status'] == 0) {
-			header('Location: index.php');
-		}*/
 		if (isset($_SESSION['UserID'])) {
 			# code...
 			$loggedDet = $_SESSION['UserID'];

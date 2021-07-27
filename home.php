@@ -19,8 +19,7 @@
 <body>
 
 	<?php include("inc/header.php"); 
-	date_default_timezone_set("Asia/Colombo");
-	$today = date("Y-m-d");
+	
 	//echo $today;
 		if (isset($_GET['Delete'])){
 			$tID = $_GET['Delete'];
