@@ -29,7 +29,7 @@
 						<a href="account.php" style="width: 100%;">Account</a>
 						<!--<a href="addDelay.php" style="width: 100%;">Add Delay</a>-->
 						<?php if($loggeduser['Role'] == "Admin"){ ?>
-							<a href="addTrain.php" style="width: 100%;">Add Train</a>
+							<a href="trains.php" style="width: 100%;">Add Train</a>
 							<a href="signup.php" style="width: 100%;">Add User</a>
 						<?php } ?>
     					<a href="logout.php" style="width: 100%;">Log out</a>

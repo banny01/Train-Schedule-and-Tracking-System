@@ -68,7 +68,7 @@
 		<div class="btns">
 			<!--<button class="btn2" type="button" onclick="location.href = 'addDelay.php';" id="myBtn">Add Delay</button>-->
 			<?php if($loggeduser['Role'] == "Admin"){ ?>
-				<button class="btn2" type="button" onclick="location.href = 'addTrain.php'" id="myBtn">Add Train</button>
+				<button class="btn2" type="button" onclick="location.href = 'trains.php'" id="myBtn">Add Train</button>
 				<button class="btn2" type="button" onclick="location.href = 'signup.php';" id="myBtn">Add User</button>
 			<?php } ?>
 		</div>
@@ -117,7 +117,7 @@
 					   ?>
 					   <td ><?php echo $delay['Delay']; ?></td>
 					   <td ><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'delay.php?Train=<?php echo $developer['ID']; ?>';" id="myBtn">Delay</button></td>
-					   <td ><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'edit.php?ID=<?php echo $developer['ID']; ?>';" id="myBtn">Edit</button></td>
+					   <td ><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'trains.php?ID=<?php echo $developer['ID']; ?>';" id="myBtn">Edit</button></td>
 					   <td ><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'home.php?Delete=<?php echo $developer['ID']; ?>';" id="myBtn">Delete</button></td>  				   				   				  
 					   </tr>
 					<?php } ?>
@@ -130,32 +130,7 @@
 </body>
 <?php
 
-	$input = filter_input_array(INPUT_POST);
-	if ($input['action'] == 'edit') {
-		$update_field='';
-		if(isset($input['Number'])) {
-			$update_field.= "Number='".$input['Number']."'";
-		} 
-		else if(isset($input['Name'])) {
-			$update_field.= "Name='".$input['Name']."'";
-		} 
-		else if(isset($input['Start'])) {
-			$update_field.= "Start='".$input['Start']."'";
-		} 
-		else if(isset($input['End'])) {
-			$update_field.= "End='".$input['End']."'";
-		}
-		else if(isset($input['TrackID'])) {
-			$update_field.= "TrackID='".$input['TrackID']."'";
-		}
-		else if(isset($input['Status'])) {
-			$update_field.= "Status='".$input['Status']."'";
-		}
-		if($update_field && $input['id']) {
-			$sql_query = "UPDATE lab_lis_qc_default_values SET $update_field WHERE id='" . $input['id'] . "'";
-			mysqli_query($con, $sql_query) or die("database error:". mysqli_error($con));
-		}
-	}
+	
 ?>
 <script>
 	$(document).ready(function() {
