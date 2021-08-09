@@ -66,26 +66,26 @@
             <h1>Add / Edit Trains</h1>
         </div>
         <form action='trains.php' method="post"> 
-            <div style="width: 50%; float: left;">
+            <div style="width: 35%; float: left;">
                 <fieldset> 
                     <legend><h2 style="color: white;">Train Details</h2></legend>
                     <table class="Singuptb" style="width: 100%; color: white;">
                         <tr style="height: 30px; ">
-                            <td style="width: 20%;">Train Number <i style="color: red;">*</i></td>
+                            <td style="width: 25%;">Train Number <i style="color: red;">*</i></td>
                             <td>:</td>
-                            <td style="width: 30%;"><input Style="width: 30%;" type="text" name="Number" placeholder="Train Number" size="50"  value="<?php echo $tNO ?>" required></td>                       
+                            <td style="width: 40%;"><input Style="width: 40%;" type="text" name="Number" placeholder="Train Number" size="50"  value="<?php echo $tNO ?>" required></td>                       
                         </tr>
                     
                         <tr style="height: 30px;">
                             <td>Name <i style="color: red;">*</i></td>
                             <td>:</td>
-                            <td><input Style="width: 40%;" type="text" name="Name" placeholder="Train Name" value="<?php echo $tName ?>" required></td>                       
+                            <td><input Style="width: 50%;" type="text" name="Name" placeholder="Train Name" value="<?php echo $tName ?>" required></td>                       
                         </tr>
                         <tr style="height: 30px;">
                             <td style="width: 20%;">Start Station <i style="color: red;">*</i></td>
                             <td>:</td>
                             <td style="width: 80%;">
-                                <select Style="width: 40%;" name="Start"  onkeypress="purchase_productList(1);" class="js-example-basic-single" id="Start" required>
+                                <select Style="width: 52%;" name="Start" class="js-example-basic-single" id="Start" required>
 				                    <option value=<?php echo $tSID ?>><?php echo $tStart ?></option>				
 				                    <?php
 				                        $query = "SELECT * FROM station";
@@ -103,7 +103,7 @@
                             <td>End Station <i style="color: red;">*</i></td>
                             <td>:</td>
                             <td>
-                                <select Style="width: 40%;" name="End"  onkeypress="purchase_productList(1);" class="js-example-basic-single" id="End" required>
+                                <select Style="width: 52%;" name="End" class="js-example-basic-single" id="End" required>
 				                    <option value=<?php echo $tEID ?>><?php echo $tEnd ?></option>				
 				                    <?php
 				                        $query = "SELECT * FROM station";
@@ -126,7 +126,7 @@
                             <td>Status <i style="color: red;">*</i></td>
                             <td>:</td>
                             <td>
-                                <select Style="width: 30%;" name="Status" id="Status" required>
+                                <select Style="width: 42%;" name="Status" id="Status" required>
 				                    <option value=<?php echo $tStatus ?>><?php echo $tStatus ?></option>
                                     <option value="DA">DA - Daily</option>
                                     <option value="WK">WK - Week end</option>				
@@ -138,7 +138,7 @@
                             <td>Cancel Status <i style="color: red;">*</i></td>
                             <td>:</td>
                             <td>
-                                <select Style="width: 30%;" name="Cancel" id="Cancel" required>
+                                <select Style="width: 42%;" name="Cancel" id="Cancel" required>
 				                    <option value=<?php echo $tCancel ?>><?php echo $tCancel ?></option>
                                     <option value=0>0 - Running</option>
                                     <option value=1>1 - Canceled</option>				
@@ -158,9 +158,48 @@
 				    </p>
                 </fieldset>
             </div>
-            <div style="width: 50%; float: right;">
+            <div style="width: 60%; float: right;">
                 <fieldset> 
                     <legend><h2 style="color: white;">Stop Stations</h2></legend>
+                    <div class="" style="width: 100%; color: white;">
+                        <table class="stations" id="stations" style="width: 100%;">
+                            <tr>
+                                <button class="schbtn" type="button" onclick="addRow();">Add Stop Station</button>
+                            </tr>
+                            <!--<tr>
+                                <td style="width: 10%;">
+                                    Station : 
+                                </td>
+                                <td style="width: 30%;">
+                                    <select Style="width: 80% " name="End"  onkeypress="purchase_productList(1);" class="js-example-basic-single" id="End" required>
+                                        <option value=<?php echo $tEID ?>><?php echo $tEnd ?></option>				
+                                        <?php
+                                            $query = "SELECT * FROM station";
+                                            $res = mysqli_query($con, $query);
+                                            while($station = mysqli_fetch_assoc($res)){
+                                                echo "<option value=".$station['ID'].">";
+                                                echo $station['Name'];
+                                                echo "</option>"; 
+                                            }
+                                        ?>
+				                    </select>
+                                </td>
+                                <td style="width: 7%;">
+                                    Arrive : 
+                                </td>
+                                <td style="width: 20%;">
+                                    <input style="border-radius: 10px; padding: 5px; " type="time" id="arrive" name="arrive">
+                                </td>
+                                <td style="width: 10%;">
+                                    Departure : 
+                                </td>
+                                <td style="width: 20%;">
+                                    <input style="border-radius: 10px; padding: 5px; " type="time" id="departure" name="departure">
+                                </td>
+                            </tr>-->
+                        </table>
+                            
+                    </div>
                 </fieldset>
             </div>
         </form>
@@ -175,10 +214,21 @@
 	
 ?>
 <script>
+    var count = 0;
+    function addRow(){
+        var table = document.getElementById("stations");
+        var row = table.insertRow(count);
+        var php = "<?php $query = "SELECT * FROM station"; $res = mysqli_query($con, $query); while($station = mysqli_fetch_assoc($res)){ echo "<option value=".$station['ID'].">"; echo $station['Name']; echo "</option>"; } ?>";
+        row.innerHTML = "<td style=\"width: 10%;\"> Station : </td> <td style=\"width: 30%\"> <select Style=\"width: 80% \" name=\"sStation["+count+"]\" class=\"js-example-basic-single\" id=\"sStation["+count+"]\" required> <option value='' > </option>" +php+ "</select> </td> <td style=\"width: 7%;\"> Arrive : </td> <td style=\"width: 20%;\"> <input style=\"border-radius: 10px; padding: 5px; \" type=\"time\" id=\"arrive["+count+"]\" name=\"arrive["+count+"]\" required></td> <td style=\"width: 10%;\"> Departure :</td><td style=\"width: 20%;\"> <input style=\"border-radius: 10px; padding: 5px; \" type=\"time\" id=\"departure["+count+"]\" name=\"departure["+count+"]\" required> </td>";
+        //alert(php);
+        count++;
+    }
+
 	$(document).ready(function() {
 		$('.js-example-basic-single').select2();
 	});
 
+    
 	
 </script>
 </html>

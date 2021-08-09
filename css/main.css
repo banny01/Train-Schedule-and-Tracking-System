@@ -209,9 +209,9 @@ table.trains {
                 overflow:auto;
                 font-family: helvetica,arial,sans-serif;
                 font-size:14px;
-                color:#333333;
+                color:#000000;
                 border-width: 1px;
-                border-color: #666666;
+                border-color: #000000;
                 border-collapse: collapse;
                 text-align: center;
             }
@@ -219,7 +219,7 @@ table.trains {
                 border-width: 1px;
                 padding: 2px;
                 border-style: solid;
-                border-color: #666666;
+                border-color: #000000;
                 background-color: #4f69ff;
             }
             table.trains td {

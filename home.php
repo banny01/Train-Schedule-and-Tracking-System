@@ -91,7 +91,10 @@
 						<th style="width: 15%;">TrackID</th>
 						<th style="width: 10%;">Status</th>
 						<th style="width: 10%;">Running Status</th>	
-						<th style="width: 10%;">Delay</th>												
+						<th style="width: 10%;">Delay</th>	
+						<th style="background-color: black"></th>
+						<th style="background-color: black"></th>
+						<th style="background-color: black"></th>											
 					</tr>
 				</thead>
 				<tbody>
@@ -104,6 +107,7 @@
 					   <td><?php echo $developer['TrackID']; ?></td> 
 					   <td ><?php echo $developer['Status']; ?></td>
 					   <td ><?php echo $developer['Cancel']; ?></td>
+					   
 					   <?php 
 					   		
 					   		if($loggeduser['StationID'] != ""){
