@@ -1,6 +1,7 @@
 <?php 
 	session_start();
 	include_once('inc/connection.php');
+	include_once('inc/func.php');
   ?>
 
 <!DOCTYPE html>
@@ -102,8 +103,8 @@
 					   <tr id="<?php echo $developer['ID']; ?>">
 					   <td><?php echo $developer['Number']; ?></td>
 					   <td ><?php echo $developer['Name']; ?></td>
-					   <td><?php echo $developer['Start']; ?></td>
-					   <td ><?php echo $developer['End']; ?></td>
+					   <td><?php echo getStation($developer['Start'], $con); ?></td>
+					   <td ><?php echo getStation($developer['End'], $con); ?></td>
 					   <td><?php echo $developer['TrackID']; ?></td> 
 					   <td ><?php echo $developer['Status']; ?></td>
 					   <td ><?php echo $developer['Cancel']; ?></td>

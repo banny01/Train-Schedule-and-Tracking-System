@@ -94,9 +94,5 @@ session_start();
 	</div>
 <?php include("inc/footer.php"); ?>
 </body>
-<script type="text/javascript">
-    document.getElementById("myButton").onclick = function () {
-        location.href = "www.yoursite.com";
-    };
-</script>
+
 </html>
