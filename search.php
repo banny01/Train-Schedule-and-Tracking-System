@@ -48,37 +48,37 @@
 
             switch($Date){
                 case "Monday":
-                    $query = "SELECT a.TrainID, c.Number, c.Name, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WD');";
+                    $query = "SELECT a.TrainID, c.Number, c.Name, c.TrackID, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WD') ORDER BY Fd ASC LIMIT 10;";
 
                     break;
 
                 case "Tuesday":
-                    $query = "SELECT a.TrainID, c.Number, c.Name, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WD');";
+                    $query = "SELECT a.TrainID, c.Number, c.Name, c.TrackID, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WD') ORDER BY Fd ASC LIMIT 10;";
 
                     break;
 
                 case "Wednesday":
-                    $query = "SELECT a.TrainID, c.Number, c.Name, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WD');";
+                    $query = "SELECT a.TrainID, c.Number, c.Name, c.TrackID, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WD') ORDER BY Fd ASC LIMIT 10;";
 
                     break;
 
                 case "Thursday":
-                    $query = "SELECT a.TrainID, c.Number, c.Name, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WD');";
+                    $query = "SELECT a.TrainID, c.Number, c.Name, c.TrackID, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WD') ORDER BY Fd ASC LIMIT 10;";
 
                     break;
 
                 case "Friday":
-                    $query = "SELECT a.TrainID, c.Number, c.Name, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WD');";
+                    $query = "SELECT a.TrainID, c.Number, c.Name, c.TrackID, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WD') ORDER BY Fd ASC LIMIT 10;";
 
                     break;
 
                 case "Saturday":
-                    $query = "SELECT a.TrainID, c.Number, c.Name, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WE');";
+                    $query = "SELECT a.TrainID, c.Number, c.Name, c.TrackID, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WE') ORDER BY Fd ASC LIMIT 10;";
 
                     break;
 
                 case "Sunday":
-                    $query = "SELECT a.TrainID, c.Number, c.Name, c.TrackID, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WE');";
+                    $query = "SELECT a.TrainID, c.Number, c.Name, c.TrackID, a.StationID AS 'From', a.A AS 'Fa', a.D AS 'Fd', b.StationID AS 'To', b.A AS 'Ta', b.D AS 'Td', c.Status FROM stopststions AS a INNER JOIN stopststions AS b ON a.TrainID = b.TrainID JOIN train AS c ON c.ID = a.TrainID WHERE ((a.StationID = $From AND b.StationID = $To AND a.D < b.D) AND a.D > TIME('$Time'+':00') AND c.Cancel = 0) AND (c.Status = 'DA' OR c.Status = 'WE') ORDER BY Fd ASC LIMIT 10;";
 
                     break;
                      
@@ -113,7 +113,7 @@
                                     <?php echo date('h:i A', strtotime($developer['Ta'])); ?> 
                                 </div>
                             </td>
-					        <?php if(!$developer['TrackID'] = 0) { ?>
+					        <?php if($developer['TrackID'] != 0) { ?>
 					        <td ><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'track.php?ID=<?php echo $developer['TrackID']; ?>';" id="myBtn">Track Now</button></td>
                             <?php } ?>
 					        <!--<td ><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'home.php?Delete=<?php echo $developer['ID']; ?>';" id="myBtn">Delete</button></td>  -->				   				   				  
