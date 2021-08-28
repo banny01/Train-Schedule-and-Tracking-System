@@ -21,7 +21,7 @@
 	<?php include("inc/header.php"); 
     $errors = 2;
     $trainID = $_GET['Train'];
-    $query = "SELECT * FROM delay WHERE TrainID = '{$trainID}' AND StationID = $loggeduser[StationID] AND DATE(Date) = '$today'";
+    $query = "SELECT * FROM delay WHERE TrainID = '{$trainID}' AND StationID = $loggeduser[StationID] AND DATE(Date) = '$today' ORDER BY ID DESC LIMIT 1;";
     $res = mysqli_query($con, $query);
     $delay = mysqli_fetch_assoc($res);
     if($loggeduser['StationID'] == 0){
@@ -56,6 +56,12 @@
                 $errors = 1;
             }
         }
+        header('Location: home.php');
+    }
+    if (isset($_POST['delete'])){
+        $query = "DELETE FROM delay WHERE TrainID = '{$trainID}' AND StationID = $loggeduser[StationID] AND DATE(Date) = '$today'";
+        mysqli_query($con, $query);
+        header('Location: home.php');
     }
 	?>
 	
@@ -98,6 +104,9 @@
 				            ?>
 				        </select> 
                         <?php }
+                        else if($loggeduser['StationID'] != 0){ ?> 
+                            <input style="width: 200px; background-color: #cfcfcf;" type="text" name="StationID" value="<?php echo "$loggeduser[StationID]" ?>" readonly>
+                        <?php } 
                         else if(isset($delay['ID'])){ ?> 
                             <input style="width: 200px; background-color: #cfcfcf;" type="text" name="StationID" value="<?php echo "$loggeduser[StationID]" ?>" readonly>
                         <?php } ?>
@@ -107,22 +116,25 @@
                         <td style="width: 90px; color: white;">Delay <i style="color: red;">*</i></td>
                         <td>:</td>
                         <?php
-                        if($loggeduser['StationID'] == 0){ ?>
-                        <td><input style="width: 200px;" type="text" name="Delay" placeholder="Delay (mins)" required></td>     
-                        <?php }
-                        else if(isset($delay['ID'])) { ?>  
+                        if(isset($delay['ID'])) { ?>  
                         <td><input style="width: 200px;" type="text" name="Delay" placeholder="Delay" value="<?php echo "$delay[Delay]" ?>" required></td>
-                        <?php } ?>                 
+                        <?php } 
+                        else{ ?>
+                            <td><input style="width: 200px;" type="text" name="Delay" placeholder="Delay (mins)" required></td>     
+                        <?php }
+                        ?>                 
                     </tr>
                 </table>
 				<p> 
                 <?php
-                    if($loggeduser['StationID'] == 0){ ?>
-					<button style="border-radius: 10px; padding: 5px;" type="submit" name="submit">Add</button>
-                    <?php }
-                    else if(isset($delay['ID'])) { ?> 
+                    if(isset($delay['ID'])) { ?> 
                     <button style="border-radius: 10px; padding: 5px;" type="submit" name="submit">Update</button>
-                    <?php } ?>     
+                    <button style="border-radius: 10px; padding: 5px;" type="submit" name="delete">Delete</button>
+                    <?php } 
+                    else{ ?>
+                        <button style="border-radius: 10px; padding: 5px;" type="submit" name="submit">Add</button>
+                    <?php }
+                    ?>     
 				</p>
 				
 			</fieldset>

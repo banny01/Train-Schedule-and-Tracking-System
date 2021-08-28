@@ -112,7 +112,7 @@
 					   <?php 
 					   		
 					   		if($loggeduser['StationID'] != ""){
-					   			$query5 = "SELECT * FROM delay WHERE StationID=$loggeduser[StationID] AND TrainID=$developer[ID] AND DATE(Date) = '$today'";
+					   			$query5 = "SELECT * FROM delay WHERE StationID=$loggeduser[StationID] AND TrainID=$developer[ID] AND DATE(Date) = '$today' ORDER BY ID DESC LIMIT 1;";
 								$res5 = mysqli_query($con, $query5);
 								$delay = mysqli_fetch_assoc($res5);
 						   }
