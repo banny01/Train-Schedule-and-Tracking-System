@@ -51,13 +51,13 @@
 			if($loggeduser['StationID'] == 2){
 				$station = 1;
 			}
-			$query = "SELECT DISTINCT(train.ID), train.Number, train.Name, train.Start, train.End, train.TrackID, train.Status, train.Cancel FROM train INNER JOIN trainlines ON train.ID = trainlines.TrainID INNER JOIN linestations ON trainlines.LineID = linestations.LineID WHERE linestations.StationID = $station";
+			$query = "SELECT DISTINCT(train.ID), train.Number, train.Name, train.Start, train.End, train.TrackID, train.Status, train.Cancel FROM train INNER JOIN stopststions ON train.ID = stopststions.TrainID WHERE stopststions.StationID = $station";
 			if (isset($_GET['train'])){
-				$query = "SELECT DISTINCT(train.ID), train.Number, train.Name, train.Start, train.End, train.TrackID, train.Status, train.Cancel FROM train INNER JOIN trainlines ON train.ID = trainlines.TrainID INNER JOIN linestations ON trainlines.LineID = linestations.LineID WHERE linestations.StationID = $station AND train.Number LIKE '%$_GET[train]%'";
+				$query = "SELECT DISTINCT(train.ID), train.Number, train.Name, train.Start, train.End, train.TrackID, train.Status, train.Cancel FROM train INNER JOIN stopststions ON train.ID = stopststions.TrainID WHERE stopststions.StationID = $station AND train.Number LIKE '%$_GET[train]%'";
 				$res = mysqli_query($con, $query);
 				$row = mysqli_fetch_array($res);
 				if($row == 0){
-					$query = "SELECT DISTINCT(train.ID), train.Number, train.Name, train.Start, train.End, train.TrackID, train.Status, train.Cancel FROM train INNER JOIN trainlines ON train.ID = trainlines.TrainID INNER JOIN linestations ON trainlines.LineID = linestations.LineID WHERE linestations.StationID = $station AND train.Name LIKE '%$_GET[train]%'";
+					$query = "SELECT DISTINCT(train.ID), train.Number, train.Name, train.Start, train.End, train.TrackID, train.Status, train.Cancel FROM train INNER JOIN stopststions ON train.ID = stopststions.TrainID WHERE stopststions.StationID = $station AND train.Name LIKE '%$_GET[train]%'";
 				}
 			}
 			$res = mysqli_query($con, $query);
@@ -92,7 +92,10 @@
 						<th style="width: 15%;">TrackID</th>
 						<th style="width: 10%;">Status</th>
 						<th style="width: 10%;">Running Status</th>	
-						<th style="width: 10%;">Delay</th>	
+						<?php
+                        if($loggeduser['StationID'] != 0){ ?>
+							<th style="width: 10%;">Delay (min)</th>
+						<?php } ?>	
 						<th style="background-color: black"></th>
 						<th style="background-color: black"></th>
 						<th style="background-color: black"></th>											
@@ -111,7 +114,7 @@
 					   
 					   <?php 
 					   		
-					   		if($loggeduser['StationID'] != ""){
+					   		if($loggeduser['StationID'] != 0){
 					   			$query5 = "SELECT * FROM delay WHERE StationID=$loggeduser[StationID] AND TrainID=$developer[ID] AND DATE(Date) = '$today' ORDER BY ID DESC LIMIT 1;";
 								$res5 = mysqli_query($con, $query5);
 								$delay = mysqli_fetch_assoc($res5);
@@ -119,9 +122,11 @@
 						   else{
 								$delay['Delay'] = "";
 						   }
-					   ?>
-					   <td ><?php echo $delay['Delay']; ?></td>
-					   <td ><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'delay.php?Train=<?php echo $developer['ID']; ?>';" id="myBtn">Delay</button></td>
+					
+                        if($loggeduser['StationID'] != 0){ ?>
+							<td ><?php echo $delay['Delay']; ?></td>
+							<td ><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'delay.php?Train=<?php echo $developer['ID']; ?>';" id="myBtn">Delay</button></td>
+					   <?php } ?>
 					   <td ><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'trains.php?ID=<?php echo $developer['ID']; ?>';" id="myBtn">Edit</button></td>
 					   <td ><button class="btn" type="button" style="border-radius: 5px; padding: 1px;" onclick="location.href = 'home.php?Delete=<?php echo $developer['ID']; ?>';" id="myBtn">Delete</button></td>  				   				   				  
 					   </tr>
